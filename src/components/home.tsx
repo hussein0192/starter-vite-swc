@@ -1,65 +1,201 @@
+import { useState } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Rocket, 
+  Shield, 
+  Zap, 
+  Code, 
+  Palette, 
+  Globe,
+  ArrowRight,
+  Star,
+  Users,
+  TrendingUp
+} from 'lucide-react';
+
 function Home() {
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  const features = [
+    {
+      icon: <Zap className="w-8 h-8 text-yellow-500" />,
+      title: "Lightning Fast",
+      description: "Built with modern technologies for optimal performance",
+      color: "bg-yellow-50 border-yellow-200"
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-green-500" />,
+      title: "Secure & Reliable",
+      description: "Enterprise-grade security with 99.9% uptime guarantee",
+      color: "bg-green-50 border-green-200"
+    },
+    {
+      icon: <Palette className="w-8 h-8 text-purple-500" />,
+      title: "Beautiful Design",
+      description: "Carefully crafted UI components with attention to detail",
+      color: "bg-purple-50 border-purple-200"
+    }
+  ];
+
+  const stats = [
+    { icon: <Users className="w-6 h-6" />, value: "10K+", label: "Active Users" },
+    { icon: <Star className="w-6 h-6" />, value: "4.9", label: "Rating" },
+    { icon: <TrendingUp className="w-6 h-6" />, value: "99.9%", label: "Uptime" },
+    { icon: <Globe className="w-6 h-6" />, value: "50+", label: "Countries" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-              مرحباً بك
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              تطبيق React مع TypeScript و Tailwind CSS
-            </p>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Rocket className="w-4 h-4 mr-2" />
+            Welcome to the Future
+          </Badge>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-blue-50 rounded-lg p-6">
-              <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">سريع</h3>
-              <p className="text-gray-600">مبني بأحدث التقنيات لأداء فائق</p>
-            </div>
-            
-            <div className="bg-green-50 rounded-lg p-6">
-              <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">موثوق</h3>
-              <p className="text-gray-600">مكونات مختبرة وقابلة للاعتماد</p>
-            </div>
-            
-            <div className="bg-purple-50 rounded-lg p-6">
-              <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">مرن</h3>
-              <p className="text-gray-600">قابل للتخصيص والتوسع بسهولة</p>
-            </div>
-          </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            Build Amazing
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
+              Applications
+            </span>
+          </h1>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-              ابدأ الآن
-            </button>
-            <button className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-              تعلم المزيد
-            </button>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Create stunning, responsive web applications with our modern React + TypeScript + Tailwind CSS stack. 
+            Everything you need to build your next project.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button size="lg" className="px-8 py-4 text-lg">
+              Get Started
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button variant="outline" size="lg" className="px-8 py-4 text-lg">
+              <Code className="w-5 h-5 mr-2" />
+              View Documentation
+            </Button>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="flex justify-center mb-2 text-blue-600">
+                  {stat.icon}
+                </div>
+                <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-        
-        <div className="mt-8 text-sm text-gray-500">
-          <p>مبني باستخدام React + TypeScript + Vite + Tailwind CSS</p>
+
+        {/* Features Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            Why Choose Our Platform?
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <Card 
+                key={index} 
+                className={`${feature.color} border-2 hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1`}
+                onClick={() => setActiveFeature(index)}
+              >
+                <CardHeader className="text-center pb-4">
+                  <div className="flex justify-center mb-4">
+                    {feature.icon}
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-gray-900">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-gray-700 leading-relaxed">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Technology Stack */}
+        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-2xl font-bold text-gray-900 mb-4">
+              Built with Modern Technologies
+            </CardTitle>
+            <CardDescription className="text-lg text-gray-600">
+              Powered by the latest and greatest tools in web development
+            </CardDescription>
+          </CardHeader>
+          
+          <CardContent>
+            <Tabs defaultValue="frontend" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 mb-8">
+                <TabsTrigger value="frontend">Frontend</TabsTrigger>
+                <TabsTrigger value="styling">Styling</TabsTrigger>
+                <TabsTrigger value="tools">Tools</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="frontend" className="space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <Badge variant="outline" className="p-3 justify-center">React 18</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">TypeScript</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Vite</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">React Router</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">React Hook Form</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Framer Motion</Badge>
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="styling" className="space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <Badge variant="outline" className="p-3 justify-center">Tailwind CSS</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Radix UI</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Lucide Icons</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">shadcn/ui</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">CSS Variables</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Responsive Design</Badge>
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="tools" className="space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <Badge variant="outline" className="p-3 justify-center">ESLint</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">PostCSS</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Autoprefixer</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Hot Reload</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Build Optimization</Badge>
+                  <Badge variant="outline" className="p-3 justify-center">Development Tools</Badge>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Ready to Get Started?
+          </h3>
+          <p className="text-gray-600 mb-8 max-w-md mx-auto">
+            Join thousands of developers who are already building amazing applications with our platform.
+          </p>
+          <Button size="lg" className="px-8 py-4 text-lg">
+            Start Building Now
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
